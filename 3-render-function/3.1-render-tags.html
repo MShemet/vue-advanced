@@ -5,9 +5,15 @@
 </div>
 
 <script>
-Vue.component('example', {
-  // Implement this!
-})
+  Vue.component('example', {
+    props: ['tags'],
+    render(h) {
+      const convertToDom = (tag, idx) => h(tag, idx);
+      const chld = this.tags.map(convertToDom);
 
-new Vue({ el: '#app' })
+      return h('div', chld);
+    },
+  });
+
+  new Vue({ el: '#app' });
 </script>
